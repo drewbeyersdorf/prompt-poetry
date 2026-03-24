@@ -66,3 +66,27 @@ def test_prime_custom():
     result = t("Describe the scene")
     assert "melancholy" in result.lower()
     assert "Describe the scene" in result
+
+
+# === CONSTRAINT ===
+from prompt_poetry.techniques.constraint import constrain
+
+
+def test_constrain_returns_transform():
+    t = constrain("under 100 words")
+    assert isinstance(t, Transform)
+
+
+def test_constrain_adds_constraint():
+    t = constrain("exactly 3 bullet points")
+    result = t("List the key findings")
+    assert "exactly 3 bullet points" in result
+    assert "List the key findings" in result
+
+
+def test_constrain_multiple():
+    t = constrain("under 100 words", "no jargon", "cite sources")
+    result = t("Explain this")
+    assert "under 100 words" in result
+    assert "no jargon" in result
+    assert "cite sources" in result
