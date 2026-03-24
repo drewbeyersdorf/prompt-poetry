@@ -170,3 +170,32 @@ def test_narrative_parable():
     t = narrative("parable")
     result = t("Explain why constraints help")
     assert "Explain why constraints help" in result
+
+
+# === TOGGLE ===
+from prompt_poetry.techniques.toggle import toggle
+
+
+def test_toggle_returns_transform():
+    t = toggle(creativity="high")
+    assert isinstance(t, Transform)
+
+
+def test_toggle_single():
+    t = toggle(depth="deep")
+    result = t("Explain this concept")
+    assert "Explain this concept" in result
+    assert any(word in result.lower() for word in ["deep", "thorough", "comprehensive", "detail"])
+
+
+def test_toggle_multiple():
+    t = toggle(creativity="high", confidence="commit", voice="casual")
+    result = t("Write about this")
+    assert "Write about this" in result
+
+
+def test_toggle_off_values():
+    t = toggle(verbosity="low", creativity="low")
+    result = t("Summarize")
+    assert "Summarize" in result
+    assert any(word in result.lower() for word in ["concise", "brief", "terse"])
