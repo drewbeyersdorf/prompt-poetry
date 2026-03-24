@@ -8,3 +8,6 @@ build/
 .venv/
 .coverage
 htmlcov/
+media/shorts/*.cast
+media/shorts/*.gif
+media/shorts/*.mp4
