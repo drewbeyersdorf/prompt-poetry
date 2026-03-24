@@ -29,3 +29,40 @@ def test_persona_callable_as_string():
     result = t("Write something")
     assert isinstance(result, str)
     assert len(result) > len("Write something")
+
+
+# === PRIMER ===
+from prompt_poetry.techniques.primer import prime
+
+
+def test_prime_returns_transform():
+    t = prime("urgency")
+    assert isinstance(t, Transform)
+
+
+def test_prime_urgency():
+    t = prime("urgency")
+    result = t("Review this data")
+    assert "Review this data" in result
+    assert any(word in result.lower() for word in ["critical", "immediate", "urgent", "time-sensitive", "priority"])
+
+
+def test_prime_precision():
+    t = prime("precision")
+    result = t("Analyze this")
+    assert "Analyze this" in result
+    assert any(word in result.lower() for word in ["exact", "precise", "accurate", "rigorous", "meticulous"])
+
+
+def test_prime_creativity():
+    t = prime("creativity")
+    result = t("Write something")
+    assert "Write something" in result
+    assert any(word in result.lower() for word in ["creative", "novel", "unexpected", "bold", "unconventional", "innovative"])
+
+
+def test_prime_custom():
+    t = prime("melancholy")
+    result = t("Describe the scene")
+    assert "melancholy" in result.lower()
+    assert "Describe the scene" in result
