@@ -90,3 +90,32 @@ def test_constrain_multiple():
     assert "under 100 words" in result
     assert "no jargon" in result
     assert "cite sources" in result
+
+
+# === RITUAL ===
+from prompt_poetry.techniques.ritual import ritual
+
+
+def test_ritual_returns_transform():
+    t = ritual("show reasoning")
+    assert isinstance(t, Transform)
+
+
+def test_ritual_step_by_step():
+    t = ritual("step by step")
+    result = t("Solve this problem")
+    assert "step by step" in result.lower() or "step-by-step" in result.lower()
+    assert "Solve this problem" in result
+
+
+def test_ritual_show_reasoning():
+    t = ritual("show reasoning")
+    result = t("Why did this fail?")
+    assert "reasoning" in result.lower()
+    assert "Why did this fail?" in result
+
+
+def test_ritual_custom():
+    t = ritual("enumerate assumptions before concluding")
+    result = t("Evaluate this")
+    assert "assumptions" in result.lower()
