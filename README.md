@@ -1,20 +1,20 @@
 <p align="center">
-  <h1 align="center">prompt-poetry</h1>
-  <p align="center">
-    <strong>The best prompt engineers aren't engineers — they're poets.</strong>
-  </p>
-  <p align="center">
-    <a href="https://github.com/drewbeyersdorf/prompt-poetry/actions"><img src="https://github.com/drewbeyersdorf/prompt-poetry/workflows/tests/badge.svg" alt="Tests"></a>
-    <a href="https://pypi.org/project/prompt-poetry/"><img src="https://img.shields.io/pypi/v/prompt-poetry?color=blue" alt="PyPI"></a>
-    <a href="https://github.com/drewbeyersdorf/prompt-poetry/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="License"></a>
-    <a href="https://github.com/drewbeyersdorf/prompt-poetry"><img src="https://img.shields.io/badge/dependencies-zero-orange" alt="Zero Dependencies"></a>
-    <a href="https://github.com/drewbeyersdorf/prompt-poetry"><img src="https://img.shields.io/badge/python-3.11%2B-blue" alt="Python 3.11+"></a>
-  </p>
+  <img src="assets/banner.svg" alt="prompt-poetry" width="100%"/>
+</p>
+
+<p align="center">
+  <a href="https://github.com/drewbeyersdorf/prompt-poetry/actions"><img src="https://github.com/drewbeyersdorf/prompt-poetry/workflows/tests/badge.svg" alt="Tests"></a>
+  <a href="https://github.com/drewbeyersdorf/prompt-poetry/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="License"></a>
+  <img src="https://img.shields.io/badge/dependencies-zero-orange" alt="Zero Dependencies">
+  <img src="https://img.shields.io/badge/python-3.11%2B-blue" alt="Python 3.11+">
+  <img src="https://img.shields.io/badge/tests-63%20passed-brightgreen" alt="63 tests">
+</p>
+
+<p align="center">
+  <strong>8 composable techniques that snap together with <code>|</code> — like Unix pipes for prompt engineering.</strong>
 </p>
 
 ---
-
-Every word in a prompt shifts attention weights. `prompt-poetry` gives you **8 composable techniques** that snap together with `|` — like Unix pipes for prompt engineering.
 
 ```python
 from prompt_poetry import persona, prime, constrain
@@ -33,14 +33,30 @@ Constraints:
 - under 200 words
 ```
 
-That's it. Transforms in, enhanced prompts out. Zero dependencies. Works with any LLM.
+One import. One pipe. Zero dependencies. Works with any LLM. **That's it.**
+
+---
+
+## The problem
+
+Prompt engineering today is copy-paste and vibes.
+
+1. You write a prompt
+2. You paste in some "best practices" you found on Reddit
+3. You tweak words until it kinda works
+4. You copy it into every project
+5. You can't test it, version it, or compose it
+
+There's no abstraction. No reuse. No composability.
+
+**prompt-poetry fixes this.** Every technique is a function. Functions compose with `|`. You can test them, version them, and snap them together like Legos.
 
 ---
 
 ## Before / After
 
 <table>
-<tr><td><strong>Without prompt-poetry</strong></td><td><strong>With prompt-poetry</strong></td></tr>
+<tr><td width="50%"><strong>❌ Without prompt-poetry</strong></td><td width="50%"><strong>✅ With prompt-poetry</strong></td></tr>
 <tr>
 <td>
 
@@ -53,6 +69,8 @@ response = client.messages.create(
     }]
 )
 # Vague question → vague answer
+# No persona, no constraints, no structure
+# The model guesses what you want
 ```
 
 </td>
@@ -65,17 +83,16 @@ response = client.messages.create(
     model="claude-sonnet-4-20250514",
     messages=[{
         "role": "user",
-        "content": analyst("Why did costs increase?")
+        "content": analyst(
+            "Why did costs increase?"
+        )
     }]
 )
-# Precise persona + depth + constraints → precise answer
+# Precise persona + depth + constraints
+# → Commits to an answer, cites evidence
 ```
 
 </td>
-</tr>
-<tr>
-<td>❌ Generic response, no numbers, hedging</td>
-<td>✅ Commits to an answer, cites evidence, goes deep</td>
 </tr>
 </table>
 
@@ -83,78 +100,114 @@ response = client.messages.create(
 
 ---
 
+## How it works
+
+<p align="center">
+  <img src="assets/how-it-works.svg" alt="How prompt-poetry works" width="100%"/>
+</p>
+
+Two classes. That's the whole framework:
+
+```python
+class Transform:
+    """Takes a string, returns a better string."""
+    def __call__(self, prompt: str) -> str: ...
+    def __or__(self, other) -> Pipeline: ...
+
+class Pipeline(Transform):
+    """Chains transforms left to right."""
+    def __call__(self, prompt: str) -> str:
+        for t in self.transforms:
+            prompt = t(prompt)
+        return prompt
+```
+
+No framework. No config. No dependencies. Transforms in, strings out.
+
+---
+
 ## Install
 
 ```bash
-pip install prompt-poetry
+pip install git+https://github.com/drewbeyersdorf/prompt-poetry.git
 ```
 
 ## The 8 Techniques
 
-| # | Technique | What it does | One-liner |
-|---|-----------|-------------|-----------|
-| 1 | **Persona** | Tunes the probability distribution | `persona("master craftsman")` |
-| 2 | **Primer** | Sets emotional temperature | `prime("urgency")` |
-| 3 | **Constraint** | Tighter bounds → better output | `constrain("under 100 words")` |
-| 4 | **Ritual** | Forces intermediate reasoning | `ritual("step by step")` |
-| 5 | **Meta** | Prompt improves itself first | `meta()` |
-| 6 | **Narrative** | Activates story pathways | `narrative("postmortem")` |
-| 7 | **Toggle** | Binary behavioral knobs | `toggle(depth="deep")` |
-| 8 | **Constitution** | Persistent identity block | `constitution(role="auditor", rules=[...])` |
+Every technique is grounded in how language actually works — in speeches, poetry, negotiations, and therapy. These aren't prompt hacks. They're linguistic principles made composable.
+
+| # | Technique | Principle | Example |
+|:---:|-----------|-----------|---------|
+| 1 | **persona** | Identity injection — different identity, different probability distribution | `persona("forensic accountant")` |
+| 2 | **prime** | Emotional temperature — urgency, precision, creativity as language | `prime("urgency")` |
+| 3 | **constrain** | The haiku principle — tighter bounds force better output | `constrain("3 bullets", "no jargon")` |
+| 4 | **ritual** | Chain of thought as ceremony — the ritual creates the state | `ritual("step by step")` |
+| 5 | **meta** | Recursive self-improvement — the model rewrites its own prompt | `meta()` |
+| 6 | **narrative** | Story activates different pathways than instruction | `narrative("postmortem")` |
+| 7 | **toggle** | Binary behavioral switches — depth, creativity, confidence | `toggle(depth="deep")` |
+| 8 | **constitution** | Persistent identity — your system prompt as composable code | `constitution(role="auditor", rules=[...])` |
 
 <details>
-<summary><strong>See each technique with output ↓</strong></summary>
+<summary><strong>See each technique with real output ↓</strong></summary>
 
-### Persona — identity injection
+### 1. Persona — identity injection
 Like tuning a radio. Same hardware, different signal.
 ```python
 >>> persona("forensic accountant")("Review these invoices")
 'You are a forensic accountant.\n\nReview these invoices'
 ```
 
-### Primer — emotional temperature
-Language-level knobs that act like adjusting temperature.
+### 2. Primer — emotional temperature
+Language-level knobs that work like adjusting temperature.
 ```python
 >>> prime("urgency")("Check the production server")
 'This is critical and time-sensitive. Prioritize accuracy and speed. Every detail matters immediately.\n\nCheck the production server'
 ```
 
-### Constraint — the haiku principle
-Sonnets produced Shakespeare. Constraints force the model off the beaten path.
+Built-in moods: `urgency`, `precision`, `creativity`, `calm`, `confidence`. Or pass any string.
+
+### 3. Constraint — the haiku principle
+Sonnets produced Shakespeare. 14 lines of iambic pentameter — that prison produced the best work.
 ```python
 >>> constrain("3 bullet points", "no jargon")("Explain kubernetes")
 'Explain kubernetes\n\nConstraints:\n- 3 bullet points\n- no jargon'
 ```
 
-### Ritual — chain of thought as ceremony
-The ritual creates the state. Monks chant before meditation for the same reason.
+### 4. Ritual — chain of thought as ceremony
+Monks chant before meditation for the same reason — the ritual creates the state.
 ```python
 >>> ritual("devil's advocate")("Should we migrate to microservices?")
 "Before answering, argue the opposite position. Then reconcile both views into your final answer.\n\nShould we migrate to microservices?"
 ```
 
-### Meta — prompts writing prompts
-The model knows its own landscape better than you do.
+Built-in rituals: `step by step`, `show reasoning`, `enumerate`, `devil's advocate`.
+
+### 5. Meta — prompts writing prompts
+The model knows its own probability landscape better than you. Ask a river where it wants to flow.
 ```python
 >>> meta()("Write a cold email")
-'Before executing the task below, first rewrite it as a clearer, more specific prompt that will produce the best possible result. Then execute your improved version.\n\nOriginal task:\nWrite a cold email'
+'Before executing the task below, first rewrite it as a clearer, more specific prompt...\n\nOriginal task:\nWrite a cold email'
 ```
 
-### Narrative — story as structure
-Lincoln told parables, not policy papers. Stories activate different pathways.
+### 6. Narrative — story as structure
+Lincoln told parables, not policy papers. A scene gives instinct, a lecture gives theory.
 ```python
 >>> narrative("postmortem")("Why did the deploy fail?")
 'Treat this as a postmortem. What happened, why, what was the impact, and what prevents recurrence.\n\nWhy did the deploy fail?'
 ```
 
-### Toggle — binary switches
+Built-in styles: `case study`, `scene`, `parable`, `briefing`, `postmortem`.
+
+### 7. Toggle — binary switches
 ```python
 >>> toggle(creativity="high", confidence="commit")("Propose a solution")
 'Be bold, surprising, and unconventional. Prefer novel approaches. Pick the best option and commit to it. No hedging.\n\nPropose a solution'
 ```
 
-### Constitution — persistent identity
-Your CLAUDE.md / system prompt as composable code.
+Dimensions: `verbosity`, `creativity`, `confidence`, `voice`, `depth`.
+
+### 8. Constitution — persistent identity
+Your system prompt as composable code.
 ```python
 >>> constitution(role="security auditor", rules=["flag all risks", "cite CVEs"])("Review this PR")
 '# Identity\nYou are security auditor.\n\n# Rules\n- flag all risks\n- cite CVEs\n\n# Task\nReview this PR'
@@ -169,56 +222,71 @@ Your CLAUDE.md / system prompt as composable code.
 The power is in the pipe. Build reusable prompt pipelines:
 
 ```python
-from prompt_poetry import persona, prime, constrain, ritual, toggle
+from prompt_poetry import persona, prime, constrain, ritual, toggle, narrative
 
-# A debugging pipeline
-debug = (
-    persona("principal SRE")
-    | prime("precision")
-    | ritual("step by step")
-    | constrain("root cause only")
-)
+# Debugging pipeline
+debug = persona("principal SRE") | prime("precision") | ritual("step by step") | constrain("root cause only")
 
-# A research pipeline
-research = (
-    persona("investigative journalist")
-    | narrative("case study")
-    | toggle(depth="deep", creativity="high")
-)
+# Research pipeline
+research = persona("investigative journalist") | narrative("case study") | toggle(depth="deep", creativity="high")
 
-# Use them everywhere
+# Anti-hallucination RAG
+rag = constitution(role="knowledge assistant", rules=["only use provided context", "cite sources"]) | prime("precision")
+
+# Use everywhere
 debug("Why is latency spiking on /api/users?")
 research("How do top YC companies handle billing?")
+rag(f"Question: {q}\n\nContext:\n{chunks}")
 ```
+
+---
 
 ## Presets
 
-Five ready-to-use pipelines:
+Five battle-tested pipelines, ready to use:
 
 ```python
 from prompt_poetry.presets import analyst, debugger, researcher, evaluator, writer
 
-analyst("What's driving the margin decrease?")     # Commits, cites numbers, goes deep
-debugger("Tests pass locally but fail in CI")      # Step-by-step, root cause, precise
-researcher("How do competitors handle X?")         # Case study, creative, thorough
-evaluator("Score these three proposals")           # Scoring ritual, no hedging
-writer("Draft a launch announcement")              # Casual voice, bold, no jargon
+analyst("What's driving the margin decrease?")     # → commits, cites numbers, goes deep
+debugger("Tests pass locally but fail in CI")      # → step-by-step, root cause, precise
+researcher("How do competitors handle X?")         # → case study, creative, thorough
+evaluator("Score these three proposals")           # → scoring ritual, no hedging
+writer("Draft a launch announcement")              # → casual voice, bold, no jargon
 ```
 
-Presets compose too:
-
+Extend any preset:
 ```python
-custom = analyst | constrain("under 50 words")  # Extend any preset
+custom = analyst | constrain("under 50 words")
+```
+
+---
+
+## CLI
+
+```bash
+# Apply a preset
+$ prompt-poetry --preset analyst "Why is churn increasing?"
+
+# Mix techniques from the command line
+$ prompt-poetry --persona "forensic accountant" --prime urgency "Review these invoices"
+
+# Pipe from stdin
+$ echo "Debug the auth flow" | prompt-poetry --preset debugger
+
+# Discover
+$ prompt-poetry --list-presets
+$ prompt-poetry --list-techniques
 ```
 
 ---
 
 ## Works with everything
 
-prompt-poetry enhances the prompt string. It doesn't care what LLM you send it to.
+prompt-poetry enhances the string. It doesn't know or care what LLM you send it to.
 
 <table>
-<tr><td><strong>OpenAI</strong></td><td><strong>Anthropic</strong></td><td><strong>Local (Ollama)</strong></td></tr>
+<tr><td><strong>OpenAI</strong></td><td><strong>Anthropic</strong></td><td><strong>Ollama / Local</strong></td></tr>
 <tr>
 <td>
 
@@ -227,7 +295,7 @@ from openai import OpenAI
 from prompt_poetry.presets import analyst
 
 client = OpenAI()
-response = client.chat.completions.create(
+client.chat.completions.create(
     model="gpt-4o",
     messages=[{
         "role": "user",
@@ -244,7 +312,7 @@ import anthropic
 from prompt_poetry.presets import analyst
 
 client = anthropic.Anthropic()
-response = client.messages.create(
+client.messages.create(
     model="claude-sonnet-4-20250514",
     max_tokens=1024,
     messages=[{
@@ -276,75 +344,64 @@ requests.post(
 
 ---
 
-## How it works
+## Build your own techniques
 
-Two classes. That's the whole framework.
+Subclass `Transform`. That's it. Your techniques compose with everything else:
 
 ```python
-class Transform:
-    """Takes a string, returns a better string."""
-    def __call__(self, prompt: str) -> str: ...
-    def __or__(self, other) -> Pipeline: ...
+from prompt_poetry.core import Transform
+from prompt_poetry import persona, prime
 
-class Pipeline(Transform):
-    """Chains transforms left to right."""
+class Audience(Transform):
+    def __init__(self, who: str):
+        self.who = who
     def __call__(self, prompt: str) -> str:
-        for t in self.transforms:
-            prompt = t(prompt)
-        return prompt
+        return f"Your audience is {self.who}. Adjust accordingly.\n\n{prompt}"
+
+# Composes with built-in techniques
+pipeline = persona("teacher") | Audience("5th graders") | prime("calm")
+pipeline("Explain how gravity works")
 ```
-
-No framework. No config files. No magic. No dependencies.
-
----
-
-## CLI
-
-Enhance prompts from your terminal:
-
-```bash
-# Apply a preset
-prompt-poetry --preset analyst "Why is churn increasing?"
-
-# Mix techniques
-prompt-poetry --persona "forensic accountant" --prime urgency "Review these invoices"
-
-# Pipe from stdin
-echo "Debug the auth flow" | prompt-poetry --preset debugger
-
-# List what's available
-prompt-poetry --list-presets
-prompt-poetry --list-techniques
-```
-
----
-
-## Use cases
-
-**Agent systems** — Auto-select techniques by task type. Research tasks get the researcher preset, debugging tasks get debugger.
-
-**RAG pipelines** — Wrap retrieval prompts with precision priming and anti-hallucination constitutions. Measurably reduces fabrication.
-
-**Fine-tuning** — Enhance training data system prompts so models internalize the techniques. The model learns to be its own poet.
-
-**CI/CD** — Test that prompts contain required techniques before deploying.
-
-**Prompt optimization** — Use as the search space for DSPy, TextGrad, or other algorithmic optimizers.
 
 ---
 
 ## vs. alternatives
 
-| | prompt-poetry | Raw prompts | LangChain PromptTemplate | DSPy |
-|---|---|---|---|---|
-| Composable | ✅ Pipe operator | ❌ Copy-paste | ⚠️ Chains but verbose | ✅ Modules |
-| Testable | ✅ Pure functions | ❌ | ⚠️ | ✅ |
-| Zero deps | ✅ | ✅ | ❌ 50+ deps | ❌ |
-| Human-readable | ✅ Reads like prose | ✅ | ❌ YAML/templates | ❌ Compiled |
-| Algorithmic optimization | 🔜 DSPy integration | ❌ | ❌ | ✅ Native |
-| Learning curve | 5 minutes | 0 | Hours | Days |
+| | prompt-poetry | Raw prompts | LangChain Templates | DSPy |
+|---|:---:|:---:|:---:|:---:|
+| **Composable** | ✅ `\|` pipe | ❌ copy-paste | ⚠️ verbose chains | ✅ modules |
+| **Testable** | ✅ pure functions | ❌ | ⚠️ | ✅ |
+| **Zero deps** | ✅ | ✅ | ❌ 50+ deps | ❌ |
+| **Human-readable** | ✅ reads like prose | ✅ | ❌ YAML/Jinja | ❌ compiled |
+| **CLI** | ✅ | ❌ | ❌ | ❌ |
+| **Custom techniques** | ✅ subclass | n/a | ⚠️ complex | ⚠️ |
+| **Learning curve** | **5 min** | 0 | hours | days |
 
-prompt-poetry is the **missing layer** between raw strings and full frameworks. Use it standalone or as the human-readable layer that feeds into DSPy.
+prompt-poetry is the **missing layer** between raw strings and full frameworks.
+
+---
+
+## The thesis
+
+The same principles that make speeches memorable, poetry powerful, and negotiations effective also make LLM prompts better:
+
+- **Persona framing** works because identity activates different probability distributions — like tuning a radio
+- **Emotional priming** works because urgency and precision in natural language act like adjusting temperature
+- **Constraints** work because tighter bounds force the model off the beaten path of average completions — sonnets produced Shakespeare
+- **Chain of thought** works because forcing intermediate states to exist changes what's possible at the end
+- **Narrative scaffolding** works because stories activate different neural pathways than instructions
+
+These aren't prompt tricks. They're how language has always worked. Every prayer, battle cry, and "I have a dream" was a prompt engineered to shift probability distributions in human neural networks.
+
+We just made them composable.
+
+---
+
+## Examples
+
+- [`agent_system.py`](examples/agent_system.py) — Auto-select techniques by task type
+- [`rag_pipeline.py`](examples/rag_pipeline.py) — Anti-hallucination RAG with constitution
+- [`custom_techniques.py`](examples/custom_techniques.py) — Build your own techniques
 
 ---
 
@@ -352,15 +409,17 @@ prompt-poetry is the **missing layer** between raw strings and full frameworks. 
 
 ```bash
 git clone https://github.com/drewbeyersdorf/prompt-poetry.git
-cd prompt-poetry
-pip install -e ".[dev]"
-pytest
+cd prompt-poetry && pip install -e ".[dev]" && pytest
 ```
 
-63 tests. They run in 0.04 seconds.
+63 tests. 0.04 seconds. Python 3.11 / 3.12 / 3.13.
 
 ---
 
 <p align="center">
-  <sub>Built by <a href="https://github.com/drewbeyersdorf">Drew Beyersdorf</a>.</sub>
+  <strong>Every word is a probability lever.</strong>
+</p>
+
+<p align="center">
+  <sub>Built by <a href="https://github.com/drewbeyersdorf">Drew Beyersdorf</a> · battle-tested in production across 21 autonomous agents</sub>
 </p>

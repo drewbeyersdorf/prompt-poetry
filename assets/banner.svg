@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117"/>
+      <stop offset="100%" style="stop-color:#161b22"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#58a6ff"/>
+      <stop offset="50%" style="stop-color:#bc8cff"/>
+      <stop offset="100%" style="stop-color:#f778ba"/>
+    </linearGradient>
+    <linearGradient id="pipe" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#58a6ff;stop-opacity:0.3"/>
+      <stop offset="50%" style="stop-color:#bc8cff;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#f778ba;stop-opacity:0.3"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="300" fill="url(#bg)" rx="0"/>
+
+  <!-- Subtle grid pattern -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#21262d" stroke-width="0.5"/>
+  </pattern>
+  <rect width="1200" height="300" fill="url(#grid)" opacity="0.5"/>
+
+  <!-- Pipe visualization -->
+  <rect x="80" y="185" width="1040" height="3" fill="url(#pipe)" rx="1.5"/>
+
+  <!-- Technique nodes on the pipe -->
+  <circle cx="180" cy="186" r="8" fill="#58a6ff" opacity="0.8"/>
+  <circle cx="320" cy="186" r="8" fill="#7c6fff" opacity="0.8"/>
+  <circle cx="460" cy="186" r="8" fill="#9d5cff" opacity="0.8"/>
+  <circle cx="600" cy="186" r="8" fill="#bc8cff" opacity="0.8"/>
+  <circle cx="740" cy="186" r="8" fill="#d174d8" opacity="0.8"/>
+  <circle cx="880" cy="186" r="8" fill="#e870b5" opacity="0.8"/>
+  <circle cx="1020" cy="186" r="8" fill="#f778ba" opacity="0.8"/>
+
+  <!-- Technique labels -->
+  <text x="180" y="220" fill="#8b949e" font-family="ui-monospace,monospace" font-size="10" text-anchor="middle">persona</text>
+  <text x="320" y="220" fill="#8b949e" font-family="ui-monospace,monospace" font-size="10" text-anchor="middle">prime</text>
+  <text x="460" y="220" fill="#8b949e" font-family="ui-monospace,monospace" font-size="10" text-anchor="middle">constrain</text>
+  <text x="600" y="220" fill="#8b949e" font-family="ui-monospace,monospace" font-size="10" text-anchor="middle">ritual</text>
+  <text x="740" y="220" fill="#8b949e" font-family="ui-monospace,monospace" font-size="10" text-anchor="middle">narrative</text>
+  <text x="880" y="220" fill="#8b949e" font-family="ui-monospace,monospace" font-size="10" text-anchor="middle">toggle</text>
+  <text x="1020" y="220" fill="#8b949e" font-family="ui-monospace,monospace" font-size="10" text-anchor="middle">meta</text>
+
+  <!-- Pipe operators -->
+  <text x="250" y="192" fill="#484f58" font-family="ui-monospace,monospace" font-size="16" text-anchor="middle">|</text>
+  <text x="390" y="192" fill="#484f58" font-family="ui-monospace,monospace" font-size="16" text-anchor="middle">|</text>
+  <text x="530" y="192" fill="#484f58" font-family="ui-monospace,monospace" font-size="16" text-anchor="middle">|</text>
+  <text x="670" y="192" fill="#484f58" font-family="ui-monospace,monospace" font-size="16" text-anchor="middle">|</text>
+  <text x="810" y="192" fill="#484f58" font-family="ui-monospace,monospace" font-size="16" text-anchor="middle">|</text>
+  <text x="950" y="192" fill="#484f58" font-family="ui-monospace,monospace" font-size="16" text-anchor="middle">|</text>
+
+  <!-- Input arrow -->
+  <text x="100" y="192" fill="#484f58" font-family="ui-monospace,monospace" font-size="14" text-anchor="middle">→</text>
+
+  <!-- Output arrow -->
+  <text x="1100" y="192" fill="#484f58" font-family="ui-monospace,monospace" font-size="14" text-anchor="middle">→</text>
+
+  <!-- Input/output labels -->
+  <text x="60" y="192" fill="#58a6ff" font-family="ui-monospace,monospace" font-size="11" text-anchor="middle">str</text>
+  <text x="1145" y="192" fill="#f778ba" font-family="ui-monospace,monospace" font-size="11" text-anchor="middle">str</text>
+
+  <!-- Title -->
+  <text x="600" y="75" fill="url(#accent)" font-family="ui-monospace,monospace" font-size="48" font-weight="bold" text-anchor="middle" letter-spacing="-1">prompt-poetry</text>
+
+  <!-- Subtitle -->
+  <text x="600" y="115" fill="#8b949e" font-family="system-ui,sans-serif" font-size="18" text-anchor="middle">composable prompt engineering for LLMs</text>
+
+  <!-- Tagline -->
+  <text x="600" y="148" fill="#58a6ff" font-family="ui-monospace,monospace" font-size="13" text-anchor="middle" opacity="0.8">every word is a probability lever</text>
+
+  <!-- Bottom stats -->
+  <text x="300" y="270" fill="#484f58" font-family="ui-monospace,monospace" font-size="12" text-anchor="middle">8 techniques</text>
+  <text x="500" y="270" fill="#484f58" font-family="ui-monospace,monospace" font-size="12" text-anchor="middle">zero dependencies</text>
+  <text x="700" y="270" fill="#484f58" font-family="ui-monospace,monospace" font-size="12" text-anchor="middle">one pipe operator</text>
+  <text x="900" y="270" fill="#484f58" font-family="ui-monospace,monospace" font-size="12" text-anchor="middle">any LLM</text>
+</svg>
