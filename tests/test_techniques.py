@@ -211,12 +211,12 @@ def test_constitution_returns_transform():
 
 
 def test_constitution_with_role_and_rules():
-    t = constitution(role="Drew's operations analyst", rules=["P&L first", "evidence before assertions", "no jargon"])
-    result = t("What's our labor cost trend?")
-    assert "Drew's operations analyst" in result
-    assert "P&L first" in result
+    t = constitution(role="senior operations analyst", rules=["data first", "evidence before assertions", "no jargon"])
+    result = t("What's our cost trend?")
+    assert "senior operations analyst" in result
+    assert "data first" in result
     assert "evidence before assertions" in result
-    assert "What's our labor cost trend?" in result
+    assert "What's our cost trend?" in result
 
 
 def test_constitution_role_only():
