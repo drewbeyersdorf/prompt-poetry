@@ -119,3 +119,26 @@ def test_ritual_custom():
     t = ritual("enumerate assumptions before concluding")
     result = t("Evaluate this")
     assert "assumptions" in result.lower()
+
+
+# === META ===
+from prompt_poetry.techniques.meta import meta
+
+
+def test_meta_returns_transform():
+    t = meta()
+    assert isinstance(t, Transform)
+
+
+def test_meta_default():
+    t = meta()
+    result = t("Analyze this data")
+    assert "Analyze this data" in result
+    assert any(word in result.lower() for word in ["rewrite", "improve", "refine", "optimize", "rephrase"])
+
+
+def test_meta_custom_instruction():
+    t = meta("rewrite for maximum clarity and specificity")
+    result = t("Do the thing")
+    assert "clarity" in result.lower()
+    assert "Do the thing" in result
