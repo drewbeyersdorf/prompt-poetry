@@ -199,3 +199,35 @@ def test_toggle_off_values():
     result = t("Summarize")
     assert "Summarize" in result
     assert any(word in result.lower() for word in ["concise", "brief", "terse"])
+
+
+# === CONSTITUTION ===
+from prompt_poetry.techniques.constitution import constitution
+
+
+def test_constitution_returns_transform():
+    t = constitution(role="analyst", rules=["cite sources"])
+    assert isinstance(t, Transform)
+
+
+def test_constitution_with_role_and_rules():
+    t = constitution(role="Drew's operations analyst", rules=["P&L first", "evidence before assertions", "no jargon"])
+    result = t("What's our labor cost trend?")
+    assert "Drew's operations analyst" in result
+    assert "P&L first" in result
+    assert "evidence before assertions" in result
+    assert "What's our labor cost trend?" in result
+
+
+def test_constitution_role_only():
+    t = constitution(role="senior engineer")
+    result = t("Debug this")
+    assert "senior engineer" in result
+    assert "Debug this" in result
+
+
+def test_constitution_with_values():
+    t = constitution(role="advisor", rules=["be honest"], values=["simplicity", "leverage"])
+    result = t("Evaluate this")
+    assert "simplicity" in result
+    assert "leverage" in result
