@@ -24,6 +24,9 @@ Homepage = "https://github.com/drewbeyersdorf/prompt-poetry"
 Repository = "https://github.com/drewbeyersdorf/prompt-poetry"
 Issues = "https://github.com/drewbeyersdorf/prompt-poetry/issues"
 
+[project.scripts]
+prompt-poetry = "prompt_poetry.cli:main"
+
 [project.optional-dependencies]
 dspy = ["dspy-ai>=2.5"]
 dev = ["pytest>=8.0", "pytest-cov>=5.0"]

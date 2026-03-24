@@ -298,6 +298,27 @@ No framework. No config files. No magic. No dependencies.
 
 ---
 
+## CLI
+
+Enhance prompts from your terminal:
+
+```bash
+# Apply a preset
+prompt-poetry --preset analyst "Why is churn increasing?"
+
+# Mix techniques
+prompt-poetry --persona "forensic accountant" --prime urgency "Review these invoices"
+
+# Pipe from stdin
+echo "Debug the auth flow" | prompt-poetry --preset debugger
+
+# List what's available
+prompt-poetry --list-presets
+prompt-poetry --list-techniques
+```
+
+---
+
 ## Use cases
 
 **Agent systems** — Auto-select techniques by task type. Research tasks get the researcher preset, debugging tasks get debugger.
@@ -336,7 +357,7 @@ pip install -e ".[dev]"
 pytest
 ```
 
-52 tests. They run in 0.05 seconds.
+63 tests. They run in 0.04 seconds.
 
 ---
 
