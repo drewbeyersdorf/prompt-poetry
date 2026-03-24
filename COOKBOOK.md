@@ -23,7 +23,7 @@ customer_responder("Customer says their last 3 orders arrived damaged and wants 
 **Prep for a meeting in 30 seconds:**
 ```python
 from prompt_poetry.presets import meeting_prep
-meeting_prep("Vendor review with ColdTrack — they overbilled us $4K last month")
+meeting_prep("Vendor review with ColdTrack - they overbilled us $4K last month")
 ```
 
 **Summarize notes after a meeting:**

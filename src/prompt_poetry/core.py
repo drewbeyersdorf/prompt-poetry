@@ -4,7 +4,7 @@ from __future__ import annotations
 
 
 class Transform:
-    """A prompt transform — takes a string, returns an enhanced string.
+    """A prompt transform - takes a string, returns an enhanced string.
 
     Subclass and implement __call__ to create a technique.
     Compose with | (pipe operator) to chain techniques.

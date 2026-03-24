@@ -106,7 +106,7 @@ def main(argv: list[str] | None = None) -> None:
             transforms.append(constrain(*parts))
 
         if not transforms:
-            # No techniques specified — just echo the prompt
+            # No techniques specified - just echo the prompt
             print(prompt_text)
             return
 

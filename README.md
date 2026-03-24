@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <strong>8 composable techniques that snap together with <code>|</code> — like Unix pipes for prompt engineering.</strong>
+  <strong>8 composable techniques that snap together with <code>|</code> - like Unix pipes for prompt engineering.</strong>
 </p>
 
 ---
@@ -134,30 +134,30 @@ pip install git+https://github.com/drewbeyersdorf/prompt-poetry.git
 
 ## The 8 Techniques
 
-Every technique is grounded in how language actually works — in speeches, poetry, negotiations, and therapy. These aren't prompt hacks. They're linguistic principles made composable.
+Every technique is grounded in how language actually works - in speeches, poetry, negotiations, and therapy. These aren't prompt hacks. They're linguistic principles made composable.
 
 | # | Technique | Principle | Example |
 |:---:|-----------|-----------|---------|
-| 1 | **persona** | Identity injection — different identity, different probability distribution | `persona("forensic accountant")` |
-| 2 | **prime** | Emotional temperature — urgency, precision, creativity as language | `prime("urgency")` |
-| 3 | **constrain** | The haiku principle — tighter bounds force better output | `constrain("3 bullets", "no jargon")` |
-| 4 | **ritual** | Chain of thought as ceremony — the ritual creates the state | `ritual("step by step")` |
-| 5 | **meta** | Recursive self-improvement — the model rewrites its own prompt | `meta()` |
+| 1 | **persona** | Identity injection - different identity, different probability distribution | `persona("forensic accountant")` |
+| 2 | **prime** | Emotional temperature - urgency, precision, creativity as language | `prime("urgency")` |
+| 3 | **constrain** | The haiku principle - tighter bounds force better output | `constrain("3 bullets", "no jargon")` |
+| 4 | **ritual** | Chain of thought as ceremony - the ritual creates the state | `ritual("step by step")` |
+| 5 | **meta** | Recursive self-improvement - the model rewrites its own prompt | `meta()` |
 | 6 | **narrative** | Story activates different pathways than instruction | `narrative("postmortem")` |
-| 7 | **toggle** | Binary behavioral switches — depth, creativity, confidence | `toggle(depth="deep")` |
-| 8 | **constitution** | Persistent identity — your system prompt as composable code | `constitution(role="auditor", rules=[...])` |
+| 7 | **toggle** | Binary behavioral switches - depth, creativity, confidence | `toggle(depth="deep")` |
+| 8 | **constitution** | Persistent identity - your system prompt as composable code | `constitution(role="auditor", rules=[...])` |
 
 <details>
 <summary><strong>See each technique with real output ↓</strong></summary>
 
-### 1. Persona — identity injection
+### 1. Persona - identity injection
 Like tuning a radio. Same hardware, different signal.
 ```python
 >>> persona("forensic accountant")("Review these invoices")
 'You are a forensic accountant.\n\nReview these invoices'
 ```
 
-### 2. Primer — emotional temperature
+### 2. Primer - emotional temperature
 Language-level knobs that work like adjusting temperature.
 ```python
 >>> prime("urgency")("Check the production server")
@@ -166,15 +166,15 @@ Language-level knobs that work like adjusting temperature.
 
 Built-in moods: `urgency`, `precision`, `creativity`, `calm`, `confidence`. Or pass any string.
 
-### 3. Constraint — the haiku principle
-Sonnets produced Shakespeare. 14 lines of iambic pentameter — that prison produced the best work.
+### 3. Constraint - the haiku principle
+Sonnets produced Shakespeare. 14 lines of iambic pentameter - that prison produced the best work.
 ```python
 >>> constrain("3 bullet points", "no jargon")("Explain kubernetes")
 'Explain kubernetes\n\nConstraints:\n- 3 bullet points\n- no jargon'
 ```
 
-### 4. Ritual — chain of thought as ceremony
-Monks chant before meditation for the same reason — the ritual creates the state.
+### 4. Ritual - chain of thought as ceremony
+Monks chant before meditation for the same reason - the ritual creates the state.
 ```python
 >>> ritual("devil's advocate")("Should we migrate to microservices?")
 "Before answering, argue the opposite position. Then reconcile both views into your final answer.\n\nShould we migrate to microservices?"
@@ -182,14 +182,14 @@ Monks chant before meditation for the same reason — the ritual creates the sta
 
 Built-in rituals: `step by step`, `show reasoning`, `enumerate`, `devil's advocate`.
 
-### 5. Meta — prompts writing prompts
+### 5. Meta - prompts writing prompts
 The model knows its own probability landscape better than you. Ask a river where it wants to flow.
 ```python
 >>> meta()("Write a cold email")
 'Before executing the task below, first rewrite it as a clearer, more specific prompt...\n\nOriginal task:\nWrite a cold email'
 ```
 
-### 6. Narrative — story as structure
+### 6. Narrative - story as structure
 Lincoln told parables, not policy papers. A scene gives instinct, a lecture gives theory.
 ```python
 >>> narrative("postmortem")("Why did the deploy fail?")
@@ -198,7 +198,7 @@ Lincoln told parables, not policy papers. A scene gives instinct, a lecture give
 
 Built-in styles: `case study`, `scene`, `parable`, `briefing`, `postmortem`.
 
-### 7. Toggle — binary switches
+### 7. Toggle - binary switches
 ```python
 >>> toggle(creativity="high", confidence="commit")("Propose a solution")
 'Be bold, surprising, and unconventional. Prefer novel approaches. Pick the best option and commit to it. No hedging.\n\nPropose a solution'
@@ -206,7 +206,7 @@ Built-in styles: `case study`, `scene`, `parable`, `briefing`, `postmortem`.
 
 Dimensions: `verbosity`, `creativity`, `confidence`, `voice`, `depth`.
 
-### 8. Constitution — persistent identity
+### 8. Constitution - persistent identity
 Your system prompt as composable code.
 ```python
 >>> constitution(role="security auditor", rules=["flag all risks", "cite CVEs"])("Review this PR")
@@ -397,9 +397,9 @@ prompt-poetry is the **missing layer** between raw strings and full frameworks.
 
 The same principles that make speeches memorable, poetry powerful, and negotiations effective also make LLM prompts better:
 
-- **Persona framing** works because identity activates different probability distributions — like tuning a radio
+- **Persona framing** works because identity activates different probability distributions - like tuning a radio
 - **Emotional priming** works because urgency and precision in natural language act like adjusting temperature
-- **Constraints** work because tighter bounds force the model off the beaten path of average completions — sonnets produced Shakespeare
+- **Constraints** work because tighter bounds force the model off the beaten path of average completions - sonnets produced Shakespeare
 - **Chain of thought** works because forcing intermediate states to exist changes what's possible at the end
 - **Narrative scaffolding** works because stories activate different neural pathways than instructions
 
@@ -411,11 +411,11 @@ We just made them composable.
 
 ## Examples
 
-- **[Cookbook](COOKBOOK.md)** — Copy-paste recipes for meetings, analysis, ops, engineering, RAG
-- [`quickstart.py`](examples/quickstart.py) — Run this to see everything in 60 seconds
-- [`agent_system.py`](examples/agent_system.py) — Auto-select techniques by task type
-- [`rag_pipeline.py`](examples/rag_pipeline.py) — Anti-hallucination RAG with constitution
-- [`custom_techniques.py`](examples/custom_techniques.py) — Build your own techniques
+- **[Cookbook](COOKBOOK.md)** - Copy-paste recipes for meetings, analysis, ops, engineering, RAG
+- [`quickstart.py`](examples/quickstart.py) - Run this to see everything in 60 seconds
+- [`agent_system.py`](examples/agent_system.py) - Auto-select techniques by task type
+- [`rag_pipeline.py`](examples/rag_pipeline.py) - Anti-hallucination RAG with constitution
+- [`custom_techniques.py`](examples/custom_techniques.py) - Build your own techniques
 
 ---
 

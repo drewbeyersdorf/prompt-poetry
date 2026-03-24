@@ -1,4 +1,4 @@
-"""Prompt Poetry — composable prompt engineering techniques for biohacking LLMs."""
+"""Prompt Poetry - composable prompt engineering techniques for biohacking LLMs."""
 
 from prompt_poetry.core import Transform, Pipeline
 from prompt_poetry.techniques import (

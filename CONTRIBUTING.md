@@ -38,4 +38,4 @@ pytest
 
 - One technique or preset per PR
 - Tests required
-- Keep it simple — if the technique needs more than 50 lines, it's probably two techniques
+- Keep it simple - if the technique needs more than 50 lines, it's probably two techniques
