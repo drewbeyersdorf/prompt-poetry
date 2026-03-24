@@ -6,6 +6,23 @@ readme = "README.md"
 license = "MIT"
 requires-python = ">=3.11"
 authors = [{ name = "Drew Beyersdorf", email = "drewbeyersdorf@gmail.com" }]
+keywords = ["prompt-engineering", "llm", "ai", "composable", "transforms", "prompt-optimization"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Typing :: Typed",
+]
+
+[project.urls]
+Homepage = "https://github.com/drewbeyersdorf/prompt-poetry"
+Repository = "https://github.com/drewbeyersdorf/prompt-poetry"
+Issues = "https://github.com/drewbeyersdorf/prompt-poetry/issues"
 
 [project.optional-dependencies]
 dspy = ["dspy-ai>=2.5"]
