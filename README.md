@@ -243,17 +243,29 @@ rag(f"Question: {q}\n\nContext:\n{chunks}")
 
 ## Presets
 
-Five battle-tested pipelines, ready to use:
+12 battle-tested pipelines across engineering, business, and knowledge:
 
 ```python
-from prompt_poetry.presets import analyst, debugger, researcher, evaluator, writer
-
-analyst("What's driving the margin decrease?")     # → commits, cites numbers, goes deep
-debugger("Tests pass locally but fail in CI")      # → step-by-step, root cause, precise
-researcher("How do competitors handle X?")         # → case study, creative, thorough
-evaluator("Score these three proposals")           # → scoring ritual, no hedging
-writer("Draft a launch announcement")              # → casual voice, bold, no jargon
+from prompt_poetry.presets import (
+    # Engineering
+    analyst,             # → commits, cites numbers, goes deep
+    debugger,            # → step-by-step, root cause, precise
+    researcher,          # → case study, creative, thorough
+    evaluator,           # → scoring ritual, no hedging
+    writer,              # → casual voice, bold, no jargon
+    # Business
+    briefer,             # → conclusion first, under 200 words
+    ops_reviewer,        # → metrics, enumerate, action items
+    meeting_prep,        # → key points, open decisions, owners
+    customer_responder,  # → acknowledge first, concrete next step
+    financial_analyst,   # → dollar amounts, P&L impact, assumptions
+    # Knowledge
+    rag_strict,          # → anti-hallucination, cite [N], never guess
+    summarizer,          # → compress without losing signal
+)
 ```
+
+See the **[Cookbook](COOKBOOK.md)** for copy-paste recipes.
 
 Extend any preset:
 ```python
@@ -399,6 +411,8 @@ We just made them composable.
 
 ## Examples
 
+- **[Cookbook](COOKBOOK.md)** — Copy-paste recipes for meetings, analysis, ops, engineering, RAG
+- [`quickstart.py`](examples/quickstart.py) — Run this to see everything in 60 seconds
 - [`agent_system.py`](examples/agent_system.py) — Auto-select techniques by task type
 - [`rag_pipeline.py`](examples/rag_pipeline.py) — Anti-hallucination RAG with constitution
 - [`custom_techniques.py`](examples/custom_techniques.py) — Build your own techniques
@@ -412,7 +426,7 @@ git clone https://github.com/drewbeyersdorf/prompt-poetry.git
 cd prompt-poetry && pip install -e ".[dev]" && pytest
 ```
 
-63 tests. 0.04 seconds. Python 3.11 / 3.12 / 3.13.
+78 tests. 0.04 seconds. Python 3.11 / 3.12 / 3.13.
 
 ---
 
