@@ -142,3 +142,31 @@ def test_meta_custom_instruction():
     result = t("Do the thing")
     assert "clarity" in result.lower()
     assert "Do the thing" in result
+
+
+# === NARRATIVE ===
+from prompt_poetry.techniques.narrative import narrative
+
+
+def test_narrative_returns_transform():
+    t = narrative("case study")
+    assert isinstance(t, Transform)
+
+
+def test_narrative_case_study():
+    t = narrative("case study")
+    result = t("Analyze the delivery failures")
+    assert "Analyze the delivery failures" in result
+    assert any(word in result.lower() for word in ["case study", "case", "scenario", "situation"])
+
+
+def test_narrative_scene():
+    t = narrative("scene")
+    result = t("Describe the warehouse flow")
+    assert "Describe the warehouse flow" in result
+
+
+def test_narrative_parable():
+    t = narrative("parable")
+    result = t("Explain why constraints help")
+    assert "Explain why constraints help" in result
