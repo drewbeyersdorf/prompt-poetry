@@ -430,10 +430,22 @@ cd prompt-poetry && pip install -e ".[dev]" && pytest
 
 ---
 
+## Ecosystem
+
+prompt-poetry is part of a toolkit for people who build with Claude Code every day.
+
+| Project | What it does |
+|---------|-------------|
+| **[prompt-poetry](https://github.com/drewbeyersdorf/prompt-poetry)** | Composable prompt engineering. You are here. |
+| **[codeREM](https://github.com/drewbeyersdorf/codeREM)** | Memory consolidation -- three-phase analysis + nightly automation |
+| **[HotBunk](https://github.com/drewbeyersdorf/hotbunk)** | Cooperative compute -- pool idle Claude Max accounts into shared capacity |
+
+---
+
 <p align="center">
   <strong>Every word is a probability lever.</strong>
 </p>
 
 <p align="center">
-  <sub>Built by <a href="https://github.com/drewbeyersdorf">Drew Beyersdorf</a> · battle-tested in production across 21 autonomous agents</sub>
+  <sub>Built by <a href="https://github.com/drewbeyersdorf">Drew Beyersdorf</a></sub>
 </p>
