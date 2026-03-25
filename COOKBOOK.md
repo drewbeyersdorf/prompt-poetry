@@ -23,7 +23,7 @@ customer_responder("Customer says their last 3 orders arrived damaged and wants 
 **Prep for a meeting in 30 seconds:**
 ```python
 from prompt_poetry.presets import meeting_prep
-meeting_prep("Vendor review with ColdTrack - they overbilled us $4K last month")
+meeting_prep("Vendor review with Acme Corp - they overbilled us $4K last month")
 ```
 
 **Summarize notes after a meeting:**
@@ -51,7 +51,7 @@ analyst("Why did labor costs jump 3% this week vs last week?")
 ```python
 from prompt_poetry import persona, ritual, toggle
 comparer = persona("strategy consultant") | ritual("devil's advocate") | toggle(confidence="commit")
-comparer("Should we renew the Intercom contract at $50K/yr or switch to Heymarket at $20K/yr?")
+comparer("Should we renew the Zendesk contract at $50K/yr or switch to Freshdesk at $20K/yr?")
 ```
 
 **Financial impact analysis:**

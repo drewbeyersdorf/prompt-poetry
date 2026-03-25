@@ -5,7 +5,7 @@ description = "Composable prompt engineering techniques for biohacking LLMs"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.11"
-authors = [{ name = "Drew Beyersdorf", email = "drewbeyersdorf@gmail.com" }]
+authors = [{ name = "Drew Beyersdorf" }]
 keywords = ["prompt-engineering", "llm", "ai", "composable", "transforms", "prompt-optimization"]
 classifiers = [
     "Development Status :: 4 - Beta",
